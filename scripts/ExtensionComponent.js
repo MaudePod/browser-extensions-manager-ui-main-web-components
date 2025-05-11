@@ -25,6 +25,7 @@ template.innerHTML = `
           </section>
           <style>
             section[class="extension"] {
+              display:grid;
               height: 100%;
               width:100%;
               background-color: var(--component-background);

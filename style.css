@@ -19,7 +19,7 @@
     --dark-gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
 
     /*Misc*/
-    --padding-width: 5%;
+    --padding-width: 50px;
     --dark-logo-fill: white;
     --light-logo-fill: #091540;
     --logo-fill: var(--dark-logo-fill);
@@ -53,7 +53,7 @@ body {
 main {
     display: grid;
     margin-bottom: 50px;
-    max-width: 1440px;
+    max-width: 1536px;
     justify-self: center;
     align-self: baseline;
 }
@@ -168,5 +168,21 @@ div[class="attribution"] {
         text-align: center;
         grid-template-columns: 1fr;
         margin-bottom: 50px;
+    }
+}
+
+@container(inline-size < 361px){
+    header,main{
+        --padding-width:15px;
+    }
+}
+
+@media (prefers-reduced-motion :no-preference) {
+    body {
+        transition: ease-in-out 1s;
+    }
+
+    main {
+        transition: ease-in-out 1.5s;
     }
 }
