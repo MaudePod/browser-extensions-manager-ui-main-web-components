@@ -19,16 +19,16 @@ export default class ExtensionsComponent extends HTMLElement {
         window.addEventListener('remove', (event) => {
             const extensionName = event.detail.name;
             if (extensionName) {
-                localStorage.removeItem(extensionName);
+                sessionStorage.removeItem(extensionName);
                 this.getExtensionsData();
             }
         });
     }
     getExtensionsData = () => {
-        if (localStorage.length == 0) {
+        if (sessionStorage.length == 0) {
             this.getExtensionsDataFromJson();
         } else {
-            this.getExtensionsDataFromLocalStorage();
+            this.getExtensionsDataFromsessionStorage();
         }
     }
     getExtensionsDataFromJson = () => {
@@ -46,18 +46,18 @@ export default class ExtensionsComponent extends HTMLElement {
                   isActive="${element.isActive}"
                   >
                 </extension-component>`;
-                    localStorage.setItem(element.name, JSON.stringify(element));
+                    sessionStorage.setItem(element.name, JSON.stringify(element));
                 });
                 this.shadowRoot.querySelector("section[class='extensions']").innerHTML = html;
             })
         });
     }
 
-    getExtensionsDataFromLocalStorage = () => {
+    getExtensionsDataFromsessionStorage = () => {
         let html = "";
 
-        Object.keys(localStorage).forEach(function (name) {
-            const extension = JSON.parse(localStorage.getItem(name));
+        Object.keys(sessionStorage).forEach(function (name) {
+            const extension = JSON.parse(sessionStorage.getItem(name));
             html += `
             <extension-component 
               logo="${extension.logo}" 

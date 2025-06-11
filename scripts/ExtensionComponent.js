@@ -154,7 +154,7 @@ export default class ExtensionComponent extends HTMLElement {
       }
     }
     this.shadowRoot.querySelector('button').addEventListener('click', (event) => {
-      localStorage.removeItem(this.getAttribute('name'));
+      sessionStorage.removeItem(this.getAttribute('name'));
       window.dispatchEvent(new CustomEvent("Item removed from cart", {}));
     });
     this.shadowRoot.querySelector("input[id='enable']").addEventListener('change', () => {
