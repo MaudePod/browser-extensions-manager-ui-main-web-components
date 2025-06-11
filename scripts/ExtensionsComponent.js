@@ -57,15 +57,19 @@ export default class ExtensionsComponent extends HTMLElement {
         let html = "";
 
         Object.keys(sessionStorage).forEach(function (name) {
-            const extension = JSON.parse(sessionStorage.getItem(name));
-            html += `
-            <extension-component 
-              logo="${extension.logo}" 
-              name="${extension.name}" 
-              description="${extension.description}" 
-              isActive="${extension.isActive}"
-              >
-            </extension-component>`;
+            const itemIsUsedToSetLightDarkTheme = sessionStorage.getItem(name) == "light" || sessionStorage.getItem(name) == "dark";
+            const isFilterItem = sessionStorage.getItem(name) == "all" || sessionStorage.getItem(name) == "active" || sessionStorage.getItem(name) == "inactive";
+            if (!(itemIsUsedToSetLightDarkTheme || isFilterItem)) {
+                const extension = JSON.parse(sessionStorage.getItem(name));
+                html += `
+                <extension-component 
+                logo="${extension.logo}" 
+                name="${extension.name}" 
+                description="${extension.description}" 
+                isActive="${extension.isActive}"
+                >
+                </extension-component>`;
+            }
         });
         this.shadowRoot.querySelector("section[class='extensions']").innerHTML = html;
     }

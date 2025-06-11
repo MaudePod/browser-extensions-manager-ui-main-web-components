@@ -12,7 +12,7 @@ template.innerHTML = `
               </p>
               <section class="actions">
                 <button>Remove</button>
-                <section class="toggle-extension" tabindex="1">
+                <section class="toggle-extension" tabindex="0">
                   <label for="disable" aria-label="Disable extension">
                     <input type="radio" name="enable-extension" id="disable" checked>
                   </label>

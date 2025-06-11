@@ -6,8 +6,13 @@ if (sessionStorage.getItem('theme')) {
     const theme = sessionStorage.getItem('theme');
     if (theme == 'dark') {
         document.querySelector('input[id="dark-theme"]').checked = true;
+        document.querySelector('label[for="dark-theme"]').removeAttribute('tabindex')
+        document.querySelector('label[for="light-theme"]').setAttribute('tabindex',0)
     } else {
         document.querySelector('input[id="light-theme"]').checked = true;
+        document.querySelector('label[for="light-theme"]').removeAttribute('tabindex')
+        document.querySelector('label[for="dark-theme"]').setAttribute('tabindex',0)
+
     }
 }
 document.querySelector('input[id="dark-theme"]').addEventListener('change', () => {
